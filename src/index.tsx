@@ -1,8 +1,31 @@
 import { createContext, useContext } from "react";
-import mapValues from "lodash.mapvalues";
 import { ComponentType } from "react";
 import { StyleProp } from "react-native";
-import omitBy from "lodash.omitby";
+
+const mapValues = (
+  value: Record<string, any>,
+  mapper: (v: any, k: string) => any
+) => {
+  const result: Record<string, any> = {};
+  Object.keys(value).forEach((k) => {
+    result[k] = mapper(k, value[k]);
+  });
+  return result;
+};
+
+const omitBy = (
+  value: Record<string, any>,
+  checker: (v: any, k: string) => boolean
+) => {
+  const result: Record<string, any> = {};
+  Object.keys(value).forEach((k) => {
+    if (checker(k, value[k])) {
+      return;
+    }
+    result[k] = value[k];
+  });
+  return result;
+};
 
 const hasFuncStyle = (styles: Record<string, any>[]) =>
   styles.some((style) =>
