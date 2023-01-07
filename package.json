@@ -1,6 +1,7 @@
 {
-  "name": "react-native-styled",
-  "version": "1.0.0",
+  "name": "@cr4zyc4t/native-styled",
+  "description": "An extremely lightweight styling solution for React Native inspired by styled-components",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "repository": "https://github.com/cr4zyc4t/react-native-styled.git",
   "author": "ToanVQ <hunter9xbn@gmail.com>",
@@ -24,5 +25,10 @@
     "@types/react-native": "~0.70.6",
     "rimraf": "^3.0.2",
     "typescript": "^4.9.4"
-  }
+  },
+  "keywords": [
+    "styled-components",
+    "styled",
+    "react-native"
+  ]
 }

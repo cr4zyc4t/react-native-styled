@@ -11,13 +11,13 @@ Inspired by [styled-component](https://styled-components.com/), but please to us
 # Installation
 
 ```
-npm install react-native-styled
+npm install @cr4zyc4t/native-styled
 ```
 
 - Or use yarn instead
 
 ```
-yarn add react-native-styled
+yarn add @cr4zyc4t/native-styled
 ```
 
 # Basic
@@ -26,12 +26,12 @@ yarn add react-native-styled
 
 ```jsx
 import { View, Text } from "react-native";
-import styled from "react-native-styled";
+import styled from "@cr4zyc4t/native-styled";
 
 const StyledView = styled(View)({
   backgroundColor: "green",
   marginTop: (props) => props.top, // custom styling props
-  marginBottom: (props) => props.$bottom, // custom props starts with $ will not be passed down to View component
+  marginBottom: (props) => props.$bottom, // custom props start with $ will not be passed down to View component
   padding: (props) => props.theme.spacing.medium, // access global theme
 });
 
@@ -54,7 +54,7 @@ const StyledText = styled(Text)(
 # Global theme (optional)
 
 ```js
-import { ThemeProvider } from "react-native-styled";
+import { ThemeProvider } from "@cr4zyc4t/native-styled";
 
 export default function App() {
   return (
@@ -70,7 +70,7 @@ export default function App() {
 _DefaultTheme_ is being used as an interface of props.theme out of the box. By default the interface DefaultTheme is empty so that's why we need to extend it.
 
 ```tsx
-declare module "react-native-styled" {
+declare module "@cr4zyc4t/native-styled" {
   export interface DefaultTheme {
     borderRadius: number;
 
@@ -85,7 +85,7 @@ declare module "react-native-styled" {
 then
 
 ```tsx
-import { DefaultTheme } from "react-native-styled";
+import { DefaultTheme } from "@cr4zyc4t/native-styled";
 
 const theme: DefaultTheme = {
   borderRadius: 10;
