@@ -58,9 +58,27 @@ import { ThemeProvider } from "@cr4zyc4t/native-styled";
 
 export default function App() {
   return (
-    <ThemeProvider value={theme}>
+    <ThemeProvider defaultTheme={theme}>
       <MainApp />
     </ThemeProvider>
+  );
+}
+```
+
+Then you can access global theme andchange it using hooks
+
+```js
+import { useTheme, useThemeSetter } from "@cr4zyc4t/native-styled";
+
+function ComponentWithTheme() {
+  const theme = useTheme();
+  const setTheme = useThemeSetter();
+
+  return (
+    <Button
+      style={{ backgroundColor: theme.backgroundColor }}
+      onPress={() => setTheme(awesomeTheme)}
+    />
   );
 }
 ```

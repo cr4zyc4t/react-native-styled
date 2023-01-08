@@ -1,4 +1,11 @@
-import { createContext, useContext } from "react";
+import {
+  createContext,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useState,
+} from "react";
 import { ComponentType } from "react";
 import { StyleProp } from "react-native";
 
@@ -38,7 +45,25 @@ const filterStyleProps = <P extends {}>(props: P) =>
 export interface DefaultTheme {}
 
 export const ThemeContext = createContext<DefaultTheme>({});
-export const ThemeProvider = ThemeContext.Provider;
+const ThemeDispatchContext = createContext<
+  Dispatch<SetStateAction<DefaultTheme>>
+>(() => {});
+
+interface ThemeProviderProps {
+  defaultTheme: DefaultTheme;
+  children: ReactNode;
+}
+export const ThemeProvider = (props: ThemeProviderProps) => {
+  const [theme, setTheme] = useState(props.defaultTheme);
+  return (
+    <ThemeDispatchContext.Provider value={setTheme}>
+      <ThemeContext.Provider value={theme}>
+        {props.children}
+      </ThemeContext.Provider>
+    </ThemeDispatchContext.Provider>
+  );
+};
+export const useThemeSetter = () => useContext(ThemeDispatchContext);
 export const useTheme = () => useContext(ThemeContext);
 
 type FuncStyle<P extends {}> = Record<

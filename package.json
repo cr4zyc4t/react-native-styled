@@ -1,7 +1,7 @@
 {
   "name": "@cr4zyc4t/native-styled",
   "description": "An extremely lightweight styling solution for React Native inspired by styled-components",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "main": "dist/index.js",
   "repository": "https://github.com/cr4zyc4t/react-native-styled.git",
   "author": "ToanVQ <hunter9xbn@gmail.com>",
@@ -16,10 +16,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@types/lodash.mapvalues": "^4.6.7",
-    "@types/lodash.omitby": "^4.6.7",
-    "@types/react": "~18.0.24",
-    "@types/react-native": "~0.70.6",
+    "@types/react": "^18.0.26",
+    "@types/react-native": "^0.70.8",
     "rimraf": "^3.0.2",
     "typescript": "^4.9.4"
   },
