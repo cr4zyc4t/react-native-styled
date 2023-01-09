@@ -15,21 +15,7 @@ const mapValues = (
 ) => {
   const result: Record<string, any> = {};
   Object.keys(value).forEach((k) => {
-    result[k] = mapper(k, value[k]);
-  });
-  return result;
-};
-
-const omitBy = (
-  value: Record<string, any>,
-  checker: (v: any, k: string) => boolean
-) => {
-  const result: Record<string, any> = {};
-  Object.keys(value).forEach((k) => {
-    if (checker(k, value[k])) {
-      return;
-    }
-    result[k] = value[k];
+    result[k] = mapper(value[k], k);
   });
   return result;
 };
@@ -39,8 +25,13 @@ const hasFuncStyle = (styles: Record<string, any>[]) =>
     Object.values(style).some((v) => typeof v === "function")
   );
 
-const filterStyleProps = <P extends {}>(props: P) =>
-  omitBy(props, (_, k) => k.startsWith("$")) as P;
+const filterStyleProps = <P extends {}>(props: P) => {
+  const result: Record<string, any> = {};
+  Object.keys(props).forEach((k) => {
+    if (!k.startsWith("$")) result[k] = (props as Record<string, any>)[k];
+  });
+  return result as P;
+};
 
 export interface DefaultTheme {}
 

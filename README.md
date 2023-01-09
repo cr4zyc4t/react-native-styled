@@ -52,7 +52,7 @@ const StyledText = styled(Text)(
 ```
 
 # Global theme (optional)
-
+Wraper your app in *ThemeProvider* and provide it a default theme value
 ```js
 import { ThemeProvider } from "@cr4zyc4t/native-styled";
 
@@ -65,7 +65,7 @@ export default function App() {
 }
 ```
 
-Then you can access global theme andchange it using hooks
+Then you can access global theme and change it using hooks
 
 ```js
 import { useTheme, useThemeSetter } from "@cr4zyc4t/native-styled";
@@ -88,6 +88,8 @@ function ComponentWithTheme() {
 _DefaultTheme_ is being used as an interface of props.theme out of the box. By default the interface DefaultTheme is empty so that's why we need to extend it.
 
 ```tsx
+import "@cr4zyc4t/native-styled";
+
 declare module "@cr4zyc4t/native-styled" {
   export interface DefaultTheme {
     borderRadius: number;
